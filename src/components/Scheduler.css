@@ -1,0 +1,61 @@
+.calendar-container {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  padding: 20px;
+  margin-bottom: 30px;
+}
+
+.fc .fc-daygrid-day-frame {
+  min-height: 90px;
+}
+
+.fc-custom-event {
+  margin-bottom: 4px;
+  cursor: pointer;
+  transition: box-shadow 0.2s;
+}
+
+.fc-custom-event:hover {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+  z-index: 2;
+}
+
+.action-btn {
+  padding: 2px 8px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  margin-right: 2px;
+}
+
+.tick-btn {
+  background-color: #28a745;
+  color: white;
+}
+
+.cross-btn {
+  background-color: #dc3545;
+  color: white;
+}
+
+.fc .fc-toolbar-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.fc .fc-button {
+  background: #007bff;
+  border: none;
+  color: white;
+  border-radius: 4px;
+  padding: 6px 12px;
+  font-size: 1rem;
+  margin: 0 2px;
+  transition: background 0.2s;
+}
+
+.fc .fc-button:hover {
+  background: #0056b3;
+} 
