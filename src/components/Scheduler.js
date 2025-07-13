@@ -3,6 +3,7 @@ import FullCalendar from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import { format } from 'date-fns';
 import './Scheduler.css';
+import dummyScheduledItems from '../data/scheduledPosts';
 
 // Platform icon mapping
 const platformIcons = {
@@ -23,50 +24,6 @@ const statusColors = {
 function Scheduler({ user }) {
   const [scheduledItems, setScheduledItems] = useState([]);
   const calendarRef = useRef(null);
-
-  // Dummy data for scheduled posts
-  const dummyScheduledItems = [
-    {
-      id: 1,
-      title: "Weekly Product Update",
-      content: "Share the latest features and improvements to our platform",
-      scheduledDate: new Date(2024, 11, 15, 10, 0),
-      status: 'pending',
-      platform: 'LinkedIn',
-    },
-    {
-      id: 2,
-      title: "Holiday Promotion Campaign",
-      content: "Launch our special holiday discount offers for customers",
-      scheduledDate: new Date(2024, 11, 20, 14, 30),
-      status: 'pending',
-      platform: 'Twitter',
-    },
-    {
-      id: 3,
-      title: "Customer Success Story",
-      content: "Highlight how our solution helped a client achieve their goals",
-      scheduledDate: new Date(2024, 11, 18, 9, 0),
-      status: 'approved',
-      platform: 'Facebook',
-    },
-    {
-      id: 4,
-      title: "Industry Insights Blog",
-      content: "Share our thoughts on the latest trends in the industry",
-      scheduledDate: new Date(2024, 11, 22, 16, 0),
-      status: 'pending',
-      platform: 'LinkedIn',
-    },
-    {
-      id: 5,
-      title: "Team Behind the Scenes",
-      content: "Showcase our amazing team and company culture",
-      scheduledDate: new Date(2024, 11, 25, 11, 0),
-      status: 'cancelled',
-      platform: 'Instagram',
-    },
-  ];
 
   useEffect(() => {
     setScheduledItems(dummyScheduledItems);
@@ -117,12 +74,8 @@ function Scheduler({ user }) {
           position: 'relative',
         }}
       >
-        <div style={{ display: 'flex', alignItems: 'center', marginBottom: 4 }}>
-          <span style={{ fontSize: 18, marginRight: 6 }}>
-            {platformIcons[item.platform] || '📝'}
-          </span>
-          <span style={{ fontWeight: 600, fontSize: 14 }}>{item.title}</span>
-        </div>
+        {/* Removed platform icon */}
+        <div style={{ fontWeight: 600, fontSize: 14, marginBottom: 4 }}>{item.title}</div>
         <div style={{ fontSize: 12, color: '#555', marginBottom: 4 }}>
           {item.content}
         </div>
