@@ -4,6 +4,7 @@ import dayGridPlugin from '@fullcalendar/daygrid';
 import { format } from 'date-fns';
 import './Scheduler.css';
 import dummyScheduledItems from '../data/scheduledPosts';
+import PostDetailModal from './PostDetailModal';
 
 // Platform icon mapping
 const platformIcons = {
@@ -24,6 +25,8 @@ const statusColors = {
 function Scheduler({ user }) {
   const [scheduledItems, setScheduledItems] = useState([]);
   const calendarRef = useRef(null);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [selectedPost, setSelectedPost] = useState(null);
 
   useEffect(() => {
     setScheduledItems(dummyScheduledItems);
@@ -73,6 +76,11 @@ function Scheduler({ user }) {
           border: `1px solid ${statusColors[item.status]}`,
           position: 'relative',
         }}
+        onClick={e => {
+          e.stopPropagation();
+          setSelectedPost(item);
+          setModalOpen(true);
+        }}
       >
         {/* Removed platform icon */}
         <div style={{ fontWeight: 600, fontSize: 14, marginBottom: 4 }}>{item.title}</div>
@@ -89,7 +97,7 @@ function Scheduler({ user }) {
                 className="action-btn tick-btn"
                 style={{ fontSize: 14, padding: '2px 8px' }}
                 title="Approve"
-                onClick={() => handleApprove(item.id)}
+                onClick={e => { e.stopPropagation(); handleApprove(item.id); }}
               >
                 ✅
               </button>
@@ -97,7 +105,7 @@ function Scheduler({ user }) {
                 className="action-btn cross-btn"
                 style={{ fontSize: 14, padding: '2px 8px' }}
                 title="Cancel"
-                onClick={() => handleCancel(item.id)}
+                onClick={e => { e.stopPropagation(); handleCancel(item.id); }}
               >
                 ❌
               </button>
@@ -159,6 +167,7 @@ function Scheduler({ user }) {
           ))}
         </div>
       </div>
+      <PostDetailModal open={modalOpen} onClose={() => setModalOpen(false)} post={selectedPost} />
     </div>
   );
 }
