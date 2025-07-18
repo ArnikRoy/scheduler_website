@@ -19,6 +19,9 @@ function Navbar({ isAuthenticated, onLogout, user }) {
               <Link to="/scheduler" className="nav-link">
                 Scheduler
               </Link>
+              <Link to="/analytics" className="nav-link">
+                Analytics
+              </Link>
               <button 
                 onClick={onLogout} 
                 className="nav-link" 

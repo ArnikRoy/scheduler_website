@@ -30,6 +30,21 @@ function PostDetailModal({ open, onClose, post }) {
             <strong>Content:</strong> {post.content}
           </div>
         )}
+        {typeof post.views === 'number' && (
+          <div style={{ marginBottom: 8 }}>
+            <strong>Views:</strong> {post.views}
+          </div>
+        )}
+        {typeof post.comments === 'number' && (
+          <div style={{ marginBottom: 8 }}>
+            <strong>Comments:</strong> {post.comments}
+          </div>
+        )}
+        {typeof post.likes === 'number' && (
+          <div style={{ marginBottom: 8 }}>
+            <strong>Likes:</strong> {post.likes}
+          </div>
+        )}
         <button onClick={onClose} style={styles.closeBtn}>Close</button>
       </div>
     </div>

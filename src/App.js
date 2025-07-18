@@ -5,6 +5,7 @@ import Home from './components/Home';
 import Login from './components/Login';
 import Signup from './components/Signup';
 import Scheduler from './components/Scheduler';
+import Analytics from './components/Analytics';
 import './App.css';
 
 function App() {
@@ -49,6 +50,14 @@ function App() {
               element={
                 isAuthenticated ? 
                 <Scheduler user={user} /> : 
+                <Navigate to="/login" replace />
+              } 
+            />
+            <Route 
+              path="/analytics" 
+              element={
+                isAuthenticated ? 
+                <Analytics user={user} /> : 
                 <Navigate to="/login" replace />
               } 
             />
